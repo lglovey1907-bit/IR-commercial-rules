@@ -80,6 +80,86 @@
     "is_new": false
   },
   {
+    "uid": "6a8e02fb1047",
+    "title": "ROUNDUP 25 QUIZ 1",
+    "url": "https://www.indianrailwayrules.com/quiz/roundup-25-mcq-ldce-quiz-01/",
+    "cc_number": "",
+    "subject": "General / Other",
+    "source": "Indian Railway Rules - Coaching",
+    "fetched_on": "2026-06-06",
+    "is_new": true
+  },
+  {
+    "uid": "9139024e3f23",
+    "title": "MOCK-100 SET 07",
+    "url": "https://www.indianrailwayrules.com/quiz/quiz-ldce-mock-100-mcq-set07/",
+    "cc_number": "",
+    "subject": "General / Other",
+    "source": "Indian Railway Rules - Coaching",
+    "fetched_on": "2026-06-06",
+    "is_new": true
+  },
+  {
+    "uid": "e0388b0d4fc1",
+    "title": "TICKET CHECKING",
+    "url": "https://indianrailwayrules.com/ticket-checking",
+    "cc_number": "",
+    "subject": "Ticket Checking",
+    "source": "Indian Railway Rules - Coaching",
+    "fetched_on": "2026-06-06",
+    "is_new": true
+  },
+  {
+    "uid": "c9fce117a8a5",
+    "title": "C A T E R I N G",
+    "url": "https://www.indianrailwayrules.com/catering",
+    "cc_number": "",
+    "subject": "General / Other",
+    "source": "Indian Railway Rules - Coaching",
+    "fetched_on": "2026-06-06",
+    "is_new": true
+  },
+  {
+    "uid": "e6bf9c427ac1",
+    "title": "Non Fare Revenue",
+    "url": "https://www.indianrailwayrules.com/non-fare-revenue",
+    "cc_number": "",
+    "subject": "Fare & Tariff",
+    "source": "Indian Railway Rules - Coaching",
+    "fetched_on": "2026-06-06",
+    "is_new": true
+  },
+  {
+    "uid": "1832c1f06897",
+    "title": "PASSENGER AMENITIES",
+    "url": "https://www.indianrailwayrules.com/passenger-amenities",
+    "cc_number": "",
+    "subject": "Concessions",
+    "source": "Indian Railway Rules - Coaching",
+    "fetched_on": "2026-06-06",
+    "is_new": true
+  },
+  {
+    "uid": "91d819a1c8e9",
+    "title": "REFERENCE BOOKS",
+    "url": "https://www.indianrailwayrules.com/reference-books/",
+    "cc_number": "",
+    "subject": "General / Other",
+    "source": "Indian Railway Rules - Coaching",
+    "fetched_on": "2026-06-06",
+    "is_new": true
+  },
+  {
+    "uid": "476887ca314a",
+    "title": "TICKET CHECKING",
+    "url": "https://www.indianrailwayrules.com/ticket-checking/",
+    "cc_number": "",
+    "subject": "Ticket Checking",
+    "source": "Indian Railway Rules - Coaching",
+    "fetched_on": "2026-06-06",
+    "is_new": true
+  },
+  {
     "uid": "sample001abc",
     "title": "Commercial Circular No. 01/2025 - Revised Refund Rules for PRS Tickets",
     "url": "https://www.indianrailwayrules.com/circulars/refund-rules-2025",
