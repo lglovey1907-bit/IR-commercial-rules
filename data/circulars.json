@@ -1,0 +1,32 @@
+[
+  {
+    "uid": "sample001abc",
+    "title": "Commercial Circular No. 01/2025 - Revised Refund Rules for PRS Tickets",
+    "url": "https://www.indianrailwayrules.com/circulars/refund-rules-2025",
+    "cc_number": "CC 01/2025",
+    "subject": "Refund & Cancellation",
+    "source": "Indian Railway Rules",
+    "fetched_on": "2025-01-15",
+    "is_new": false
+  },
+  {
+    "uid": "sample002abc",
+    "title": "Instructions regarding UTS ticketing at suburban stations - Updated guidelines",
+    "url": "https://www.indianrailwayrules.com/coaching/uts-suburban",
+    "cc_number": "",
+    "subject": "UTS / Unreserved",
+    "source": "Indian Railway Rules",
+    "fetched_on": "2025-01-10",
+    "is_new": false
+  },
+  {
+    "uid": "sample003abc",
+    "title": "RBE No. 05/2025 - Revised fare structure for AC classes",
+    "url": "https://www.indianrailwayrules.com/railway-board-orders/rbe-05-2025",
+    "cc_number": "RBE No. 05/2025",
+    "subject": "Fare & Tariff",
+    "source": "Railway Board",
+    "fetched_on": "2025-01-08",
+    "is_new": false
+  }
+]
