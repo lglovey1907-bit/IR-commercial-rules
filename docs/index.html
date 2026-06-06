@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IR Commercial Rules Repository — Delhi Division</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ── RESET & BASE ─────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:         #0d1117;
+  --bg2:        #161b22;
+  --bg3:        #1c2230;
+  --border:     #30363d;
+  --border2:    #21262d;
+  --accent:     #f97316;
+  --accent2:    #fb923c;
+  --blue:       #58a6ff;
+  --green:      #3fb950;
+  --red:        #f85149;
+  --yellow:     #e3b341;
+  --text:       #e6edf3;
+  --text2:      #8b949e;
+  --text3:      #6e7681;
+  --mono:       'DM Mono', monospace;
+  --sans:       'Sora', sans-serif;
+  --radius:     8px;
+  --radius-lg:  12px;
+  --shadow:     0 4px 24px rgba(0,0,0,0.4);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* ── TOPBAR ───────────────────────────────────────────────────── */
+.topbar {
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 52px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo-mark {
+  width: 28px; height: 28px;
+  background: var(--accent);
+  border-radius: 6px;
+  display: grid; place-items: center;
+  flex-shrink: 0;
+}
+.logo-mark svg { width: 16px; height: 16px; }
+
+.logo-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.02em;
+}
+.logo-text span { color: var(--accent); }
+
+.topbar-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.badge-live {
+  display: flex; align-items: center; gap: 6px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--green);
+  background: rgba(63,185,80,0.1);
+  border: 1px solid rgba(63,185,80,0.25);
+  border-radius: 20px;
+  padding: 3px 10px;
+}
+.dot-live {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+.last-updated {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text3);
+}
+
+/* ── HERO ─────────────────────────────────────────────────────── */
+.hero {
+  background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1a1f2e 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 40px 24px 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(249,115,22,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-inner { max-width: 1200px; margin: 0 auto; }
+
+.hero-tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.hero h1 {
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.hero h1 em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.hero-sub {
+  font-size: 14px;
+  color: var(--text2);
+  max-width: 540px;
+  margin-bottom: 28px;
+}
+
+/* Stats row */
+.stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.stat-chip {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 120px;
+}
+.stat-number {
+  font-family: var(--mono);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--accent);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 11px;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ── MAIN LAYOUT ──────────────────────────────────────────────── */
+.main-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .main-layout { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+}
+
+/* ── SIDEBAR ──────────────────────────────────────────────────── */
+.sidebar {
+  position: sticky;
+  top: 76px;
+  align-self: start;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.sidebar-title {
+  padding: 12px 16px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid var(--border2);
+}
+
+.subject-list { list-style: none; }
+
+.subject-item {
+  border-bottom: 1px solid var(--border2);
+}
+.subject-item:last-child { border-bottom: none; }
+
+.subject-btn {
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--text2);
+  text-align: left;
+  transition: background 0.15s, color 0.15s;
+}
+.subject-btn:hover { background: rgba(255,255,255,0.04); color: var(--text); }
+.subject-btn.active {
+  background: rgba(249,115,22,0.1);
+  color: var(--accent);
+  border-left: 2px solid var(--accent);
+}
+
+.subject-count {
+  font-family: var(--mono);
+  font-size: 11px;
+  background: var(--bg3);
+  color: var(--text3);
+  border-radius: 10px;
+  padding: 1px 7px;
+  flex-shrink: 0;
+}
+.subject-btn.active .subject-count {
+  background: rgba(249,115,22,0.15);
+  color: var(--accent2);
+}
+
+/* ── CONTENT AREA ─────────────────────────────────────────────── */
+.content-area {}
+
+/* Search + filters bar */
+.search-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.search-wrap {
+  flex: 1;
+  position: relative;
+  min-width: 200px;
+}
+.search-wrap svg {
+  position: absolute;
+  left: 12px; top: 50%;
+  transform: translateY(-50%);
+  color: var(--text3);
+  width: 16px; height: 16px;
+  pointer-events: none;
+}
+.search-input {
+  width: 100%;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 9px 12px 9px 36px;
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.search-input::placeholder { color: var(--text3); }
+.search-input:focus { border-color: var(--accent); }
+
+.filter-select {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 9px 12px;
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--text2);
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  padding-right: 32px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236e7681' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  transition: border-color 0.15s;
+}
+.filter-select:focus { border-color: var(--accent); color: var(--text); }
+
+/* Results info */
+.results-info {
+  font-size: 12px;
+  color: var(--text3);
+  margin-bottom: 12px;
+  font-family: var(--mono);
+}
+.results-info strong { color: var(--accent); }
+
+/* ── CIRCULAR CARDS ───────────────────────────────────────────── */
+.cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.circular-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  transition: border-color 0.15s, background 0.15s;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+.circular-card:hover {
+  border-color: rgba(249,115,22,0.4);
+  background: rgba(249,115,22,0.02);
+}
+.circular-card.is-new {
+  border-color: rgba(63,185,80,0.3);
+  background: rgba(63,185,80,0.03);
+}
+
+.card-icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  background: var(--bg3);
+  display: grid; place-items: center;
+  flex-shrink: 0;
+  font-size: 16px;
+}
+
+.card-body { flex: 1; min-width: 0; }
+
+.card-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+
+.card-subject {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.new-badge {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--green);
+  background: rgba(63,185,80,0.12);
+  border: 1px solid rgba(63,185,80,0.25);
+  border-radius: 12px;
+  padding: 1px 7px;
+}
+
+.cc-number {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--blue);
+  background: rgba(88,166,255,0.08);
+  border: 1px solid rgba(88,166,255,0.2);
+  border-radius: 12px;
+  padding: 1px 7px;
+  margin-left: auto;
+}
+
+.card-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.card-meta span {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text3);
+}
+.card-meta a {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent2);
+  text-decoration: none;
+}
+.card-meta a:hover { text-decoration: underline; }
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 60px 24px;
+  color: var(--text3);
+}
+.empty-icon { font-size: 40px; margin-bottom: 12px; }
+.empty-state h3 { font-size: 16px; color: var(--text2); margin-bottom: 6px; }
+.empty-state p { font-size: 13px; }
+
+/* Loading */
+.loading {
+  text-align: center;
+  padding: 60px 24px;
+  color: var(--text3);
+  font-family: var(--mono);
+  font-size: 13px;
+}
+
+/* ── SUBJECT COLOR MAP ────────────────────────────────────────── */
+.subj-prs       { background: rgba(88,166,255,0.12); color: #58a6ff; }
+.subj-uts       { background: rgba(63,185,80,0.12);  color: #3fb950; }
+.subj-atvm      { background: rgba(249,115,22,0.12); color: #f97316; }
+.subj-tc        { background: rgba(248,81,73,0.12);  color: #f85149; }
+.subj-catering  { background: rgba(227,179,65,0.12); color: #e3b341; }
+.subj-concession{ background: rgba(163,113,247,0.12);color: #a371f7; }
+.subj-refund    { background: rgba(248,81,73,0.12);  color: #f85149; }
+.subj-fare      { background: rgba(227,179,65,0.12); color: #e3b341; }
+.subj-goods     { background: rgba(139,148,158,0.15);color: #8b949e; }
+.subj-coaching  { background: rgba(88,166,255,0.12); color: #58a6ff; }
+.subj-lost      { background: rgba(163,113,247,0.12);color: #a371f7; }
+.subj-rti       { background: rgba(63,185,80,0.12);  color: #3fb950; }
+.subj-general   { background: rgba(139,148,158,0.12);color: #8b949e; }
+
+/* ── FOOTER ───────────────────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 24px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text3);
+  font-family: var(--mono);
+  margin-top: 40px;
+}
+footer a { color: var(--text3); text-decoration: none; }
+footer a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="topbar">
+  <div class="logo-mark">
+    <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="1" y="9" width="14" height="3" rx="1" fill="white"/>
+      <rect x="3" y="4" width="10" height="3" rx="1" fill="white" opacity="0.7"/>
+      <rect x="3" y="13" width="2" height="3" rx="1" fill="white" opacity="0.5"/>
+      <rect x="11" y="13" width="2" height="3" rx="1" fill="white" opacity="0.5"/>
+    </svg>
+  </div>
+  <span class="logo-text">IR <span>Commercial Rules</span> Repository</span>
+  <div class="topbar-right">
+    <span class="badge-live"><span class="dot-live"></span>Auto-updating</span>
+    <span class="last-updated" id="last-updated-top">—</span>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">🚂 Northern Railway · Delhi Division · Commercial Branch</div>
+    <h1>Commercial Rules &amp; <em>Circulars</em> Repository</h1>
+    <p class="hero-sub">All Railway Board orders, commercial circulars, and policy updates — automatically fetched, classified by subject, and updated daily.</p>
+    <div class="stats-row">
+      <div class="stat-chip">
+        <span class="stat-number" id="stat-total">—</span>
+        <span class="stat-label">Total records</span>
+      </div>
+      <div class="stat-chip">
+        <span class="stat-number" id="stat-new">—</span>
+        <span class="stat-label">New this week</span>
+      </div>
+      <div class="stat-chip">
+        <span class="stat-number" id="stat-subjects">—</span>
+        <span class="stat-label">Subjects</span>
+      </div>
+      <div class="stat-chip">
+        <span class="stat-number" id="stat-sources">—</span>
+        <span class="stat-label">Sources</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-title">Filter by subject</div>
+    <ul class="subject-list" id="subject-list">
+      <li class="subject-item">
+        <button class="subject-btn active" data-subject="all" onclick="filterSubject('all', this)">
+          All subjects <span class="subject-count" id="count-all">—</span>
+        </button>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="content-area">
+    <div class="search-bar">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+        </svg>
+        <input type="text" class="search-input" id="search-input"
+          placeholder="Search by title, CC number, subject…"
+          oninput="applyFilters()">
+      </div>
+      <select class="filter-select" id="sort-select" onchange="applyFilters()">
+        <option value="newest">Newest first</option>
+        <option value="oldest">Oldest first</option>
+        <option value="az">A → Z</option>
+      </select>
+      <select class="filter-select" id="source-select" onchange="applyFilters()">
+        <option value="all">All sources</option>
+      </select>
+    </div>
+
+    <div class="results-info" id="results-info">Loading…</div>
+    <div class="cards-list" id="cards-list">
+      <div class="loading">⏳ Loading circulars…</div>
+    </div>
+  </main>
+</div>
+
+<footer>
+  <p>Data auto-fetched from official IR sources via GitHub Actions · 
+  <a href="https://github.com/lglovey1907-bit/ir-commercial-rules" target="_blank">View on GitHub</a> · 
+  For official reference always verify from Railway Board / Zonal HQ</p>
+</footer>
+
+<script>
+// ── DATA & STATE ────────────────────────────────────────────────
+let ALL_DATA  = [];
+let activeSubject = 'all';
+
+const SUBJECT_ICONS = {
+  "PRS / Reservation":    "🎫",
+  "UTS / Unreserved":     "🎟️",
+  "ATVM / Vending":       "🏧",
+  "Ticket Checking":      "🔍",
+  "Catering":             "🍱",
+  "Concessions":          "🤝",
+  "Refund & Cancellation":"↩️",
+  "Fare & Tariff":        "💰",
+  "Goods & Parcel":       "📦",
+  "Coaching Operations":  "🚃",
+  "Lost Property":        "🔎",
+  "RTI / Complaints":     "📋",
+  "General / Other":      "📄",
+};
+
+const SUBJECT_CSS = {
+  "PRS / Reservation":    "subj-prs",
+  "UTS / Unreserved":     "subj-uts",
+  "ATVM / Vending":       "subj-atvm",
+  "Ticket Checking":      "subj-tc",
+  "Catering":             "subj-catering",
+  "Concessions":          "subj-concession",
+  "Refund & Cancellation":"subj-refund",
+  "Fare & Tariff":        "subj-fare",
+  "Goods & Parcel":       "subj-goods",
+  "Coaching Operations":  "subj-coaching",
+  "Lost Property":        "subj-lost",
+  "RTI / Complaints":     "subj-rti",
+  "General / Other":      "subj-general",
+};
+
+// ── LOAD DATA ───────────────────────────────────────────────────
+async function loadData() {
+  try {
+    // In GitHub Pages, the JSON is at the root of the /data/ folder
+    const resp = await fetch('../data/circulars.json');
+    if (!resp.ok) throw new Error('Failed to fetch');
+    ALL_DATA = await resp.json();
+  } catch (e) {
+    // Fallback: try relative path (works when opened from /docs/)
+    try {
+      const resp2 = await fetch('circulars.json');
+      if (!resp2.ok) throw new Error('Fallback failed');
+      ALL_DATA = await resp2.json();
+    } catch (e2) {
+      ALL_DATA = getSampleData();
+    }
+  }
+  init();
+}
+
+// ── INITIALISE ──────────────────────────────────────────────────
+function init() {
+  buildStats();
+  buildSidebar();
+  buildSourceFilter();
+  applyFilters();
+  updateLastUpdated();
+}
+
+function updateLastUpdated() {
+  if (!ALL_DATA.length) return;
+  const dates = ALL_DATA.map(d => d.fetched_on).filter(Boolean).sort().reverse();
+  const latest = dates[0] || '';
+  document.getElementById('last-updated-top').textContent = latest ? `Updated: ${latest}` : '';
+}
+
+function buildStats() {
+  const total    = ALL_DATA.length;
+  const oneWeek  = new Date(); oneWeek.setDate(oneWeek.getDate() - 7);
+  const newCount = ALL_DATA.filter(d => {
+    return d.is_new || (d.fetched_on && new Date(d.fetched_on) >= oneWeek);
+  }).length;
+  const subjects  = new Set(ALL_DATA.map(d => d.subject)).size;
+  const sources   = new Set(ALL_DATA.map(d => d.source)).size;
+
+  document.getElementById('stat-total').textContent    = total;
+  document.getElementById('stat-new').textContent      = newCount;
+  document.getElementById('stat-subjects').textContent = subjects;
+  document.getElementById('stat-sources').textContent  = sources;
+  document.getElementById('count-all').textContent     = total;
+}
+
+function buildSidebar() {
+  const subjectCounts = {};
+  ALL_DATA.forEach(d => {
+    subjectCounts[d.subject] = (subjectCounts[d.subject] || 0) + 1;
+  });
+
+  const sorted = Object.entries(subjectCounts).sort((a,b) => b[1] - a[1]);
+  const list   = document.getElementById('subject-list');
+
+  sorted.forEach(([subj, count]) => {
+    const li  = document.createElement('li');
+    li.className = 'subject-item';
+    const btn = document.createElement('button');
+    btn.className = 'subject-btn';
+    btn.dataset.subject = subj;
+    btn.onclick = () => filterSubject(subj, btn);
+    btn.innerHTML = `
+      <span>${SUBJECT_ICONS[subj] || '📄'} ${subj}</span>
+      <span class="subject-count">${count}</span>
+    `;
+    li.appendChild(btn);
+    list.appendChild(li);
+  });
+}
+
+function buildSourceFilter() {
+  const sources = [...new Set(ALL_DATA.map(d => d.source))];
+  const sel     = document.getElementById('source-select');
+  sources.forEach(s => {
+    const opt = document.createElement('option');
+    opt.value = s; opt.textContent = s;
+    sel.appendChild(opt);
+  });
+}
+
+// ── FILTER & RENDER ─────────────────────────────────────────────
+function filterSubject(subj, btn) {
+  activeSubject = subj;
+  document.querySelectorAll('.subject-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  applyFilters();
+}
+
+function applyFilters() {
+  const query  = document.getElementById('search-input').value.toLowerCase().trim();
+  const sort   = document.getElementById('sort-select').value;
+  const source = document.getElementById('source-select').value;
+
+  let results = ALL_DATA.filter(d => {
+    const matchSubj   = activeSubject === 'all' || d.subject === activeSubject;
+    const matchSource = source === 'all' || d.source === source;
+    const matchQuery  = !query ||
+      d.title.toLowerCase().includes(query) ||
+      (d.cc_number || '').toLowerCase().includes(query) ||
+      (d.subject || '').toLowerCase().includes(query);
+    return matchSubj && matchSource && matchQuery;
+  });
+
+  // Sort
+  if (sort === 'newest') results.sort((a,b) => (b.fetched_on||'').localeCompare(a.fetched_on||''));
+  else if (sort === 'oldest') results.sort((a,b) => (a.fetched_on||'').localeCompare(b.fetched_on||''));
+  else results.sort((a,b) => a.title.localeCompare(b.title));
+
+  renderCards(results);
+  document.getElementById('results-info').innerHTML =
+    `Showing <strong>${results.length}</strong> of ${ALL_DATA.length} records`;
+}
+
+function renderCards(data) {
+  const container = document.getElementById('cards-list');
+
+  if (!data.length) {
+    container.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-icon">🔍</div>
+        <h3>No circulars found</h3>
+        <p>Try a different search term or subject filter.</p>
+      </div>`;
+    return;
+  }
+
+  container.innerHTML = data.map(d => {
+    const cssClass = SUBJECT_CSS[d.subject] || 'subj-general';
+    const icon     = SUBJECT_ICONS[d.subject] || '📄';
+    const isNew    = d.is_new;
+    const ccBadge  = d.cc_number
+      ? `<span class="cc-number">${escHtml(d.cc_number)}</span>` : '';
+    const newBadge = isNew ? `<span class="new-badge">NEW</span>` : '';
+
+    return `
+    <a class="circular-card ${isNew ? 'is-new' : ''}" href="${escHtml(d.url)}" target="_blank" rel="noopener">
+      <div class="card-icon">${icon}</div>
+      <div class="card-body">
+        <div class="card-top">
+          <span class="card-subject ${cssClass}">${escHtml(d.subject)}</span>
+          ${newBadge}
+          ${ccBadge}
+        </div>
+        <div class="card-title">${escHtml(d.title)}</div>
+        <div class="card-meta">
+          <span>📅 ${d.fetched_on || 'Unknown date'}</span>
+          <span>🌐 ${escHtml(d.source || '')}</span>
+          <a href="${escHtml(d.url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Open ↗</a>
+        </div>
+      </div>
+    </a>`;
+  }).join('');
+}
+
+function escHtml(str) {
+  if (!str) return '';
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── SAMPLE DATA (fallback when JSON not yet available) ───────────
+function getSampleData() {
+  return [
+    { uid:"s1", title:"Commercial Circular No. 01/2025 - Revised Refund Rules for PRS Tickets", url:"#", cc_number:"CC 01/2025", subject:"Refund & Cancellation", source:"Indian Railway Rules", fetched_on:"2025-01-15", is_new:true },
+    { uid:"s2", title:"Instructions regarding UTS ticketing at suburban stations", url:"#", cc_number:"", subject:"UTS / Unreserved", source:"Indian Railway Rules", fetched_on:"2025-01-10", is_new:false },
+    { uid:"s3", title:"RBE No. 05/2025 - Revised fare structure for AC classes", url:"#", cc_number:"RBE No. 05/2025", subject:"Fare & Tariff", source:"Railway Board", fetched_on:"2025-01-08", is_new:false },
+    { uid:"s4", title:"Circular on ATVM installation and maintenance at B and C category stations", url:"#", cc_number:"", subject:"ATVM / Vending", source:"Indian Railway Rules", fetched_on:"2025-01-05", is_new:false },
+    { uid:"s5", title:"Concession orders for senior citizens and persons with disability", url:"#", cc_number:"", subject:"Concessions", source:"Indian Railway Rules", fetched_on:"2024-12-28", is_new:false },
+    { uid:"s6", title:"Guidelines on ticket checking at unmanned level crossings and remote stations", url:"#", cc_number:"CC 12/2024", subject:"Ticket Checking", source:"Indian Railway Rules", fetched_on:"2024-12-20", is_new:false },
+  ];
+}
+
+// ── BOOT ────────────────────────────────────────────────────────
+loadData();
+</script>
+</body>
+</html>
