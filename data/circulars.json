@@ -1,5 +1,85 @@
 [
   {
+    "uid": "2d5c5568d51c",
+    "title": "INDIAN RAILWAY RULES",
+    "url": "https://www.indianrailwayrules.com/",
+    "cc_number": "",
+    "subject": "General / Other",
+    "source": "Indian Railway Rules",
+    "fetched_on": "2026-06-06",
+    "is_new": true
+  },
+  {
+    "uid": "1a5759df9e3d",
+    "title": "REVISION 21 COACHING 01",
+    "url": "https://www.indianrailwayrules.com/quiz/quiz-ldce-question-bank-revision-mcq-coaching-set01/",
+    "cc_number": "",
+    "subject": "Coaching Operations",
+    "source": "Indian Railway Rules",
+    "fetched_on": "2026-06-06",
+    "is_new": true
+  },
+  {
+    "uid": "16723feacf97",
+    "title": "REVISION 20 FREIGHT 07",
+    "url": "https://www.indianrailwayrules.com/quiz/quiz-ldce-question-bank-revision-mcq-freight-set20/",
+    "cc_number": "",
+    "subject": "Goods & Parcel",
+    "source": "Indian Railway Rules",
+    "fetched_on": "2026-06-06",
+    "is_new": true
+  },
+  {
+    "uid": "ca1ec1e05caa",
+    "title": "REVISION 19 CONCESSION",
+    "url": "https://www.indianrailwayrules.com/quiz/quiz-ldce-question-bank-revision-mcq-railway-concession-set19/",
+    "cc_number": "",
+    "subject": "Concessions",
+    "source": "Indian Railway Rules",
+    "fetched_on": "2026-06-06",
+    "is_new": true
+  },
+  {
+    "uid": "c15f8069de01",
+    "title": "REVISION 18 CIRCULAR JOURNEY TICKET",
+    "url": "https://www.indianrailwayrules.com/quiz/quiz-ldce-question-bank-revision-mcq-circular-journey-ticket-set18/",
+    "cc_number": "",
+    "subject": "General / Other",
+    "source": "Indian Railway Rules",
+    "fetched_on": "2026-06-06",
+    "is_new": true
+  },
+  {
+    "uid": "b2c4d1dc75ee",
+    "title": "RAILWAY ESTABLISHMENT RULES",
+    "url": "https://www.indianrailwayrules.com/establishment/",
+    "cc_number": "",
+    "subject": "General / Other",
+    "source": "Indian Railway Rules",
+    "fetched_on": "2026-06-06",
+    "is_new": true
+  },
+  {
+    "uid": "4cb4e52181ca",
+    "title": "Terms and conditions",
+    "url": "https://www.indianrailwayrules.com/terms-and-conditions/",
+    "cc_number": "",
+    "subject": "General / Other",
+    "source": "Indian Railway Rules",
+    "fetched_on": "2026-06-06",
+    "is_new": true
+  },
+  {
+    "uid": "5282369c0167",
+    "title": "FINANCE & ESTABLISHMENT",
+    "url": "https://www.indianrailwayrules.com/establishment",
+    "cc_number": "",
+    "subject": "General / Other",
+    "source": "Indian Railway Rules - Circulars",
+    "fetched_on": "2026-06-06",
+    "is_new": true
+  },
+  {
     "uid": "sample001abc",
     "title": "Commercial Circular No. 01/2025 - Revised Refund Rules for PRS Tickets",
     "url": "https://www.indianrailwayrules.com/circulars/refund-rules-2025",
