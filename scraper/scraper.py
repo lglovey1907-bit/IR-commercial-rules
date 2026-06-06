@@ -15,7 +15,7 @@ from datetime import datetime
 
 SOURCES = [
     {
-        "name": "Indian Railway Rules",
+        "name": "Indian Railway Rules - Coaching",
         "url": "https://www.indianrailwayrules.com/coaching/",
         "type": "list"
     },
@@ -25,7 +25,7 @@ SOURCES = [
         "type": "list"
     },
     {
-        "name": "Railway Board",
+        "name": "Indian Railway Rules - RBE Orders",
         "url": "https://www.indianrailwayrules.com/railway-board-orders/",
         "type": "list"
     },
@@ -124,8 +124,8 @@ def extract_cc_number(title: str) -> str:
 
 HEADERS = {
     "User-Agent": (
-        "Mozilla/5.0 (compatible; IR-Rules-Bot/1.0; "
-        "+https://github.com/lglovey1907-bit/IR-commercial-rules)"
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+        "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     )
 }
 
@@ -133,17 +133,24 @@ HEADERS = {
 def scrape_source(source: dict) -> list:
     results = []
     try:
+        print(f"  Fetching {source['url']}...")
         resp = requests.get(source["url"], headers=HEADERS, timeout=15)
         resp.raise_for_status()
         soup = BeautifulSoup(resp.text, "html.parser")
 
-        for a in soup.find_all("a", href=True):
+        # Find all links
+        all_links = soup.find_all("a", href=True)
+        print(f"    Found {len(all_links)} links total")
+
+        for a in all_links:
             title = a.get_text(separator=" ", strip=True)
             href = a["href"].strip()
 
-            if len(title) < 20 or href.startswith("#"):
+            # Filter by length
+            if len(title) < 15 or href.startswith("#"):
                 continue
 
+            # Fix relative URLs
             if href.startswith("/"):
                 from urllib.parse import urlparse
                 base = urlparse(source["url"])
@@ -151,14 +158,16 @@ def scrape_source(source: dict) -> list:
             elif not href.startswith("http"):
                 continue
 
+            # Look for signal words
             signals = [
                 "circular", "order", "instruction", "cc-", "cc ",
-                "rbe", "rule", "chapter", "clause", "policy",
-                "notification", "guideline", "amendment"
+                "rbe", "rule", "chapter", "policy", "notification",
+                "guideline", "amendment", "board", "bulletin"
             ]
             if not any(s in title.lower() or s in href.lower() for s in signals):
                 continue
 
+            # Create record
             record = {
                 "uid": make_uid(href, title),
                 "title": title,
@@ -171,8 +180,10 @@ def scrape_source(source: dict) -> list:
             }
             results.append(record)
 
+    except requests.exceptions.RequestException as e:
+        print(f"  ⚠️  Error fetching {source['url']}: {e}")
     except Exception as e:
-        print(f"  ⚠️  Error scraping {source['url']}: {e}")
+        print(f"  ⚠️  Parse error: {e}")
 
     return results
 
@@ -256,11 +267,11 @@ def send_telegram_alert(new_items: list):
     try:
         resp = requests.post(api_url, json=payload, timeout=10)
         if resp.status_code == 200:
-            print(f"✅ Telegram alert sent to chat {chat_id}")
+            print(f"✅ Telegram alert sent")
         else:
-            print(f"⚠️  Telegram error {resp.status_code}: {resp.text}")
+            print(f"⚠️  Telegram error {resp.status_code}")
     except Exception as e:
-        print(f"⚠️  Telegram request failed: {e}")
+        print(f"⚠️  Telegram failed: {e}")
 
 
 def print_stats(records: list):
@@ -268,36 +279,38 @@ def print_stats(records: list):
     subjects = Counter(r["subject"] for r in records)
     print("\n📊 Subject-wise count:")
     for subj, count in subjects.most_common():
-        print(f"   {subj:<35} {count:>4} records")
+        print(f"   {subj:<35} {count:>4}")
 
 
 def main():
-    print("=" * 60)
+    print("=" * 70)
     print("  IR Commercial Rules Scraper")
-    print(f"  Run date: {datetime.today().strftime('%Y-%m-%d %H:%M')}")
-    print("=" * 60)
+    print(f"  Started: {datetime.today().strftime('%Y-%m-%d %H:%M:%S')}")
+    print("=" * 70)
 
     all_new = []
     for source in SOURCES:
-        print(f"\n🔍 Scraping: {source['name']} ...")
+        print(f"\n🔍 Scraping: {source['name']}")
         items = scrape_source(source)
-        print(f"   Found {len(items)} items")
+        print(f"   ✅ Found {len(items)} potential records")
         all_new.extend(items)
+
+    print(f"\n📥 Total items to process: {len(all_new)}")
 
     added_items = update_database(all_new)
     all_records = load_db()
 
-    print(f"\n✅ Added {len(added_items)} new records.")
+    print(f"\n✅ Added {len(added_items)} NEW records")
     print(f"📁 Total in database: {len(all_records)}")
     print_stats(all_records)
 
     if added_items:
-        print(f"\n📲 Sending Telegram alert for {len(added_items)} new items...")
+        print(f"\n📲 Sending Telegram alert...")
         send_telegram_alert(added_items)
     else:
-        print("\n📭 No new circulars today — Telegram alert skipped.")
+        print("\n📭 No new circulars today")
 
-    print("\n✅ Done. data/circulars.json updated.")
+    print("\n✅ Done!")
 
 
 if __name__ == "__main__":
